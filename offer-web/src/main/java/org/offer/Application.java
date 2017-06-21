@@ -1,4 +1,4 @@
-package org.offer.main;
+package org.offer;
 
 
 import org.springframework.boot.SpringApplication;
