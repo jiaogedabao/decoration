@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.offer.dao.UserinfoDAO">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.offer.bean.UserinfoBean">
+			<id column="id" property="id" />
+			<id column="login_name" property="loginName" />
+			<id column="login_pwd" property="loginPwd" />
+			<id column="real_name" property="realName" />
+			<id column="phone" property="phone" />
+			<id column="email" property="email" />
+			<id column="type" property="type" />
+			<id column="pro_year" property="proYear" />
+			<id column="company" property="company" />
+			<id column="status" property="status" />
+    </resultMap>
+
+    <!--查询所有字段-->
+    <sql id="selectAllColumns">
+        select
+        id,
+        login_name,
+        login_pwd,
+        real_name,
+        phone,
+        email,
+        type,
+        pro_year,
+        company,
+        status
+        from  userinfo
+    </sql>
+
+	<!--分页-->
+    <sql id="pagination_tail">
+        limit #{page.pageOffset} , #{page.rows}
+    </sql>
+
+    <!--数量-->
+    <sql id="count_Tail">
+        select count(*) from userinfo record
+    </sql>
+
+
+
+	<!--查询条件-->
+	<sql id="where_fragement">
+		<where>s
+			<if test="entity != null">
+				<if test="entity.id != null and entity.id != ''">
+					and id = #{entity.id}
+				</if>
+				<if test="entity.loginName != null and entity.loginName != ''">
+					and login_name = #{entity.loginName}
+				</if>
+				<if test="entity.loginPwd != null and entity.loginPwd != ''">
+					and login_pwd = #{entity.loginPwd}
+				</if>
+				<if test="entity.realName != null and entity.realName != ''">
+					and real_name = #{entity.realName}
+				</if>
+				<if test="entity.phone != null and entity.phone != ''">
+					and phone = #{entity.phone}
+				</if>
+				<if test="entity.email != null and entity.email != ''">
+					and email = #{entity.email}
+				</if>
+				<if test="entity.type != null and entity.type != ''">
+					and type = #{entity.type}
+				</if>
+				<if test="entity.proYear != null and entity.proYear != ''">
+					and pro_year = #{entity.proYear}
+				</if>
+				<if test="entity.company != null and entity.company != ''">
+					and company = #{entity.company}
+				</if>
+				<if test="entity.status != null and entity.status != ''">
+					and status = #{entity.status}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.UserinfoBean">
+        insert into userinfo(
+            id,
+            login_name,
+            login_pwd,
+            real_name,
+            phone,
+            email,
+            type,
+            pro_year,
+            company,
+            status
+        )values(
+            #{id},
+            #{loginName},
+            #{loginPwd},
+            #{realName},
+            #{phone},
+            #{email},
+            #{type},
+            #{proYear},
+            #{company},
+            #{status}
+        )
+    </insert>
+
+    <update id="update">
+        update  userinfo
+        <set>
+            <if test="entity.id != null and entity.id != ''">
+                and id = #{id}
+            </if>
+            <if test="entity.loginName != null and entity.loginName != ''">
+                and login_name = #{loginName}
+            </if>
+            <if test="entity.loginPwd != null and entity.loginPwd != ''">
+                and login_pwd = #{loginPwd}
+            </if>
+            <if test="entity.realName != null and entity.realName != ''">
+                and real_name = #{realName}
+            </if>
+            <if test="entity.phone != null and entity.phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="entity.email != null and entity.email != ''">
+                and email = #{email}
+            </if>
+            <if test="entity.type != null and entity.type != ''">
+                and type = #{type}
+            </if>
+            <if test="entity.proYear != null and entity.proYear != ''">
+                and pro_year = #{proYear}
+            </if>
+            <if test="entity.company != null and entity.company != ''">
+                and company = #{company}
+            </if>
+            <if test="entity.status != null and entity.status != ''">
+                and status = #{status}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id删除-->
+    <delete id="delete">
+        delete from userinfo where id = #{id}
+    </delete>
+
+    <!--根据id查询-->
+    <select id="queryById" resultMap="BaseResultMap" >
+        select * from userinfo
+        where id = #{id}
+    </select>
+
+    <!--列表查询-->
+	<select id="queryList" resultMap="BaseResultMap">
+        <include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+        <if test="page!=null">
+            <include refid="pagination_tail" />
+        </if>
+	</select>
+
+
+    <!--数量查询-->
+	<select id="queryCount" resultType="java.lang.Long">
+        <include refid="count_Tail"></include>
+		<include refid="where_fragement" />
+	</select>
+
+</mapper>

@@ -16,8 +16,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-	<!-- springboot 依赖包 start -->
-		
-		<!-- springboot 依赖包 end -->
+		<!--代码生成 start-->
+		 <dependency>
+            <groupId>com.camelot.core</groupId>
+            <artifactId>camelot-generator</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--代码生成 end-->
 	</dependencies>
 </project>

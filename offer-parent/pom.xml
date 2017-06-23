@@ -60,9 +60,8 @@
 		<!-- springboot 依赖包 end -->
 		
 		<dependency>
-		   <groupId>org.xerial</groupId>
-		   <artifactId>sqlite-jdbc</artifactId>
-		   <version>3.8.7</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
 		    <groupId>com.alibaba</groupId>

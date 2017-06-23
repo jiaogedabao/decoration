@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.offer.dao.DicProjectDAO">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.offer.bean.DicProjectBean">
+			<id column="id" property="id" />
+			<id column="user_id" property="userId" />
+			<id column="name" property="name" />
+			<id column="unit" property="unit" />
+			<id column="des_construction" property="desConstruction" />
+			<id column="des_stuff" property="desStuff" />
+			<id column="price" property="price" />
+			<id column="remarks" property="remarks" />
+    </resultMap>
+
+    <!--查询所有字段-->
+    <sql id="selectAllColumns">
+        select
+        id,
+        user_id,
+        name,
+        unit,
+        des_construction,
+        des_stuff,
+        price,
+        remarks
+        from  dic_project
+    </sql>
+
+	<!--分页-->
+    <sql id="pagination_tail">
+        limit #{page.pageOffset} , #{page.rows}
+    </sql>
+
+    <!--数量-->
+    <sql id="count_Tail">
+        select count(*) from dic_project record
+    </sql>
+
+
+
+	<!--查询条件-->
+	<sql id="where_fragement">
+		<where>s
+			<if test="entity != null">
+				<if test="entity.id != null and entity.id != ''">
+					and id = #{entity.id}
+				</if>
+				<if test="entity.userId != null and entity.userId != ''">
+					and user_id = #{entity.userId}
+				</if>
+				<if test="entity.name != null and entity.name != ''">
+					and name = #{entity.name}
+				</if>
+				<if test="entity.unit != null and entity.unit != ''">
+					and unit = #{entity.unit}
+				</if>
+				<if test="entity.desConstruction != null and entity.desConstruction != ''">
+					and des_construction = #{entity.desConstruction}
+				</if>
+				<if test="entity.desStuff != null and entity.desStuff != ''">
+					and des_stuff = #{entity.desStuff}
+				</if>
+				<if test="entity.price != null and entity.price != ''">
+					and price = #{entity.price}
+				</if>
+				<if test="entity.remarks != null and entity.remarks != ''">
+					and remarks = #{entity.remarks}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.DicProjectBean">
+        insert into dic_project(
+            id,
+            user_id,
+            name,
+            unit,
+            des_construction,
+            des_stuff,
+            price,
+            remarks
+        )values(
+            #{id},
+            #{userId},
+            #{name},
+            #{unit},
+            #{desConstruction},
+            #{desStuff},
+            #{price},
+            #{remarks}
+        )
+    </insert>
+
+    <update id="update">
+        update  dic_project
+        <set>
+            <if test="entity.id != null and entity.id != ''">
+                and id = #{id}
+            </if>
+            <if test="entity.userId != null and entity.userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="entity.name != null and entity.name != ''">
+                and name = #{name}
+            </if>
+            <if test="entity.unit != null and entity.unit != ''">
+                and unit = #{unit}
+            </if>
+            <if test="entity.desConstruction != null and entity.desConstruction != ''">
+                and des_construction = #{desConstruction}
+            </if>
+            <if test="entity.desStuff != null and entity.desStuff != ''">
+                and des_stuff = #{desStuff}
+            </if>
+            <if test="entity.price != null and entity.price != ''">
+                and price = #{price}
+            </if>
+            <if test="entity.remarks != null and entity.remarks != ''">
+                and remarks = #{remarks}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id删除-->
+    <delete id="delete">
+        delete from dic_project where id = #{id}
+    </delete>
+
+    <!--根据id查询-->
+    <select id="queryById" resultMap="BaseResultMap" >
+        select * from dic_project
+        where id = #{id}
+    </select>
+
+    <!--列表查询-->
+	<select id="queryList" resultMap="BaseResultMap">
+        <include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+        <if test="page!=null">
+            <include refid="pagination_tail" />
+        </if>
+	</select>
+
+
+    <!--数量查询-->
+	<select id="queryCount" resultType="java.lang.Long">
+        <include refid="count_Tail"></include>
+		<include refid="where_fragement" />
+	</select>
+
+</mapper>

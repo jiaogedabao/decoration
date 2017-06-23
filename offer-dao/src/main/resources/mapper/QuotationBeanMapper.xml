@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.offer.dao.QuotationDAO">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.offer.bean.QuotationBean">
+			<id column="id" property="id" />
+			<id column="user_id" property="userId" />
+			<id column="name" property="name" />
+			<id column="cust_name" property="custName" />
+			<id column="cust_phone" property="custPhone" />
+			<id column="cust_email" property="custEmail" />
+			<id column="total_price" property="totalPrice" />
+			<id column="descripton" property="descripton" />
+			<id column="is_send" property="isSend" />
+			<id column="create_dt" property="createDt" />
+			<id column="send_dt" property="sendDt" />
+    </resultMap>
+
+    <!--查询所有字段-->
+    <sql id="selectAllColumns">
+        select
+        id,
+        user_id,
+        name,
+        cust_name,
+        cust_phone,
+        cust_email,
+        total_price,
+        descripton,
+        is_send,
+        create_dt,
+        send_dt
+        from  quotation
+    </sql>
+
+	<!--分页-->
+    <sql id="pagination_tail">
+        limit #{page.pageOffset} , #{page.rows}
+    </sql>
+
+    <!--数量-->
+    <sql id="count_Tail">
+        select count(*) from quotation record
+    </sql>
+
+
+
+	<!--查询条件-->
+	<sql id="where_fragement">
+		<where>s
+			<if test="entity != null">
+				<if test="entity.id != null and entity.id != ''">
+					and id = #{entity.id}
+				</if>
+				<if test="entity.userId != null and entity.userId != ''">
+					and user_id = #{entity.userId}
+				</if>
+				<if test="entity.name != null and entity.name != ''">
+					and name = #{entity.name}
+				</if>
+				<if test="entity.custName != null and entity.custName != ''">
+					and cust_name = #{entity.custName}
+				</if>
+				<if test="entity.custPhone != null and entity.custPhone != ''">
+					and cust_phone = #{entity.custPhone}
+				</if>
+				<if test="entity.custEmail != null and entity.custEmail != ''">
+					and cust_email = #{entity.custEmail}
+				</if>
+				<if test="entity.totalPrice != null and entity.totalPrice != ''">
+					and total_price = #{entity.totalPrice}
+				</if>
+				<if test="entity.descripton != null and entity.descripton != ''">
+					and descripton = #{entity.descripton}
+				</if>
+				<if test="entity.isSend != null and entity.isSend != ''">
+					and is_send = #{entity.isSend}
+				</if>
+				<if test="entity.createDt != null ">
+					and create_dt = #{entity.createDt}
+				</if>
+				 <if test="entity.createDtStart != null and entity.createDtStart != ''">
+                     <![CDATA[  and create_dt >= #{entity.createDtStart} ]]>
+                 </if>
+				 <if test="entity.createDtEnd != null and entity.createDtEnd != ''">
+					 <![CDATA[  and create_dt <= #{entity.createDtEnd} ]]>
+				 </if>
+				<if test="entity.sendDt != null ">
+					and send_dt = #{entity.sendDt}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.QuotationBean">
+        insert into quotation(
+            id,
+            user_id,
+            name,
+            cust_name,
+            cust_phone,
+            cust_email,
+            total_price,
+            descripton,
+            is_send,
+            create_dt,
+            send_dt
+        )values(
+            #{id},
+            #{userId},
+            #{name},
+            #{custName},
+            #{custPhone},
+            #{custEmail},
+            #{totalPrice},
+            #{descripton},
+            #{isSend},
+            #{createDt},
+            #{sendDt}
+        )
+    </insert>
+
+    <update id="update">
+        update  quotation
+        <set>
+            <if test="entity.id != null and entity.id != ''">
+                and id = #{id}
+            </if>
+            <if test="entity.userId != null and entity.userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="entity.name != null and entity.name != ''">
+                and name = #{name}
+            </if>
+            <if test="entity.custName != null and entity.custName != ''">
+                and cust_name = #{custName}
+            </if>
+            <if test="entity.custPhone != null and entity.custPhone != ''">
+                and cust_phone = #{custPhone}
+            </if>
+            <if test="entity.custEmail != null and entity.custEmail != ''">
+                and cust_email = #{custEmail}
+            </if>
+            <if test="entity.totalPrice != null and entity.totalPrice != ''">
+                and total_price = #{totalPrice}
+            </if>
+            <if test="entity.descripton != null and entity.descripton != ''">
+                and descripton = #{descripton}
+            </if>
+            <if test="entity.isSend != null and entity.isSend != ''">
+                and is_send = #{isSend}
+            </if>
+            <if test="entity.createDt != null ">
+                and create_dt = #{createDt}
+            </if>
+                <if test="entity.createDtStart != null and entity.createDtStart != ''">
+                    <![CDATA[  and create_dt >= #{createDtStart} ]]>
+                </if>
+                <if test="entity.createDtEnd != null and entity.createDtEnd != ''">
+                    <![CDATA[  and create_dt <= #{createDtEnd} ]]>
+                </if>
+            <if test="entity.sendDt != null ">
+                and send_dt = #{sendDt}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id删除-->
+    <delete id="delete">
+        delete from quotation where id = #{id}
+    </delete>
+
+    <!--根据id查询-->
+    <select id="queryById" resultMap="BaseResultMap" >
+        select * from quotation
+        where id = #{id}
+    </select>
+
+    <!--列表查询-->
+	<select id="queryList" resultMap="BaseResultMap">
+        <include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+        <if test="page!=null">
+            <include refid="pagination_tail" />
+        </if>
+	</select>
+
+
+    <!--数量查询-->
+	<select id="queryCount" resultType="java.lang.Long">
+        <include refid="count_Tail"></include>
+		<include refid="where_fragement" />
+	</select>
+
+</mapper>

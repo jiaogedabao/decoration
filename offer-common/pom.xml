@@ -13,6 +13,7 @@
 
 	<artifactId>offer-common</artifactId>
 	<name>offer-common</name>
+	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

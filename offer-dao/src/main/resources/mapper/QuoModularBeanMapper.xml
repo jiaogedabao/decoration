@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.offer.dao.QuoModularDAO">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.offer.bean.QuoModularBean">
+			<id column="id" property="id" />
+			<id column="quo_id" property="quoId" />
+			<id column="mod_namer" property="modNamer" />
+			<id column="mod_price" property="modPrice" />
+			<id column="mod_order" property="modOrder" />
+    </resultMap>
+
+    <!--查询所有字段-->
+    <sql id="selectAllColumns">
+        select
+        id,
+        quo_id,
+        mod_namer,
+        mod_price,
+        mod_order
+        from  quo_modular
+    </sql>
+
+	<!--分页-->
+    <sql id="pagination_tail">
+        limit #{page.pageOffset} , #{page.rows}
+    </sql>
+
+    <!--数量-->
+    <sql id="count_Tail">
+        select count(*) from quo_modular record
+    </sql>
+
+
+
+	<!--查询条件-->
+	<sql id="where_fragement">
+		<where>s
+			<if test="entity != null">
+				<if test="entity.id != null and entity.id != ''">
+					and id = #{entity.id}
+				</if>
+				<if test="entity.quoId != null and entity.quoId != ''">
+					and quo_id = #{entity.quoId}
+				</if>
+				<if test="entity.modNamer != null and entity.modNamer != ''">
+					and mod_namer = #{entity.modNamer}
+				</if>
+				<if test="entity.modPrice != null and entity.modPrice != ''">
+					and mod_price = #{entity.modPrice}
+				</if>
+				<if test="entity.modOrder != null and entity.modOrder != ''">
+					and mod_order = #{entity.modOrder}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.QuoModularBean">
+        insert into quo_modular(
+            id,
+            quo_id,
+            mod_namer,
+            mod_price,
+            mod_order
+        )values(
+            #{id},
+            #{quoId},
+            #{modNamer},
+            #{modPrice},
+            #{modOrder}
+        )
+    </insert>
+
+    <update id="update">
+        update  quo_modular
+        <set>
+            <if test="entity.id != null and entity.id != ''">
+                and id = #{id}
+            </if>
+            <if test="entity.quoId != null and entity.quoId != ''">
+                and quo_id = #{quoId}
+            </if>
+            <if test="entity.modNamer != null and entity.modNamer != ''">
+                and mod_namer = #{modNamer}
+            </if>
+            <if test="entity.modPrice != null and entity.modPrice != ''">
+                and mod_price = #{modPrice}
+            </if>
+            <if test="entity.modOrder != null and entity.modOrder != ''">
+                and mod_order = #{modOrder}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id删除-->
+    <delete id="delete">
+        delete from quo_modular where id = #{id}
+    </delete>
+
+    <!--根据id查询-->
+    <select id="queryById" resultMap="BaseResultMap" >
+        select * from quo_modular
+        where id = #{id}
+    </select>
+
+    <!--列表查询-->
+	<select id="queryList" resultMap="BaseResultMap">
+        <include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+        <if test="page!=null">
+            <include refid="pagination_tail" />
+        </if>
+	</select>
+
+
+    <!--数量查询-->
+	<select id="queryCount" resultType="java.lang.Long">
+        <include refid="count_Tail"></include>
+		<include refid="where_fragement" />
+	</select>
+
+</mapper>

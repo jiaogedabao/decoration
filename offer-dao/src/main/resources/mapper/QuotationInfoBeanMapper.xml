@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.offer.dao.QuotationInfoDAO">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.offer.bean.QuotationInfoBean">
+			<id column="id" property="id" />
+			<id column="mod_id" property="modId" />
+			<id column="pro_sup_name" property="proSupName" />
+			<id column="unit" property="unit" />
+			<id column="unit_price" property="unitPrice" />
+			<id column="num" property="num" />
+			<id column="des_construction" property="desConstruction" />
+			<id column="des_stuff" property="desStuff" />
+			<id column="remarks" property="remarks" />
+    </resultMap>
+
+    <!--查询所有字段-->
+    <sql id="selectAllColumns">
+        select
+        id,
+        mod_id,
+        pro_sup_name,
+        unit,
+        unit_price,
+        num,
+        des_construction,
+        des_stuff,
+        remarks
+        from  quotation_info
+    </sql>
+
+	<!--分页-->
+    <sql id="pagination_tail">
+        limit #{page.pageOffset} , #{page.rows}
+    </sql>
+
+    <!--数量-->
+    <sql id="count_Tail">
+        select count(*) from quotation_info record
+    </sql>
+
+
+
+	<!--查询条件-->
+	<sql id="where_fragement">
+		<where>s
+			<if test="entity != null">
+				<if test="entity.id != null and entity.id != ''">
+					and id = #{entity.id}
+				</if>
+				<if test="entity.modId != null and entity.modId != ''">
+					and mod_id = #{entity.modId}
+				</if>
+				<if test="entity.proSupName != null and entity.proSupName != ''">
+					and pro_sup_name = #{entity.proSupName}
+				</if>
+				<if test="entity.unit != null and entity.unit != ''">
+					and unit = #{entity.unit}
+				</if>
+				<if test="entity.unitPrice != null and entity.unitPrice != ''">
+					and unit_price = #{entity.unitPrice}
+				</if>
+				<if test="entity.num != null and entity.num != ''">
+					and num = #{entity.num}
+				</if>
+				<if test="entity.desConstruction != null and entity.desConstruction != ''">
+					and des_construction = #{entity.desConstruction}
+				</if>
+				<if test="entity.desStuff != null and entity.desStuff != ''">
+					and des_stuff = #{entity.desStuff}
+				</if>
+				<if test="entity.remarks != null and entity.remarks != ''">
+					and remarks = #{entity.remarks}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.QuotationInfoBean">
+        insert into quotation_info(
+            id,
+            mod_id,
+            pro_sup_name,
+            unit,
+            unit_price,
+            num,
+            des_construction,
+            des_stuff,
+            remarks
+        )values(
+            #{id},
+            #{modId},
+            #{proSupName},
+            #{unit},
+            #{unitPrice},
+            #{num},
+            #{desConstruction},
+            #{desStuff},
+            #{remarks}
+        )
+    </insert>
+
+    <update id="update">
+        update  quotation_info
+        <set>
+            <if test="entity.id != null and entity.id != ''">
+                and id = #{id}
+            </if>
+            <if test="entity.modId != null and entity.modId != ''">
+                and mod_id = #{modId}
+            </if>
+            <if test="entity.proSupName != null and entity.proSupName != ''">
+                and pro_sup_name = #{proSupName}
+            </if>
+            <if test="entity.unit != null and entity.unit != ''">
+                and unit = #{unit}
+            </if>
+            <if test="entity.unitPrice != null and entity.unitPrice != ''">
+                and unit_price = #{unitPrice}
+            </if>
+            <if test="entity.num != null and entity.num != ''">
+                and num = #{num}
+            </if>
+            <if test="entity.desConstruction != null and entity.desConstruction != ''">
+                and des_construction = #{desConstruction}
+            </if>
+            <if test="entity.desStuff != null and entity.desStuff != ''">
+                and des_stuff = #{desStuff}
+            </if>
+            <if test="entity.remarks != null and entity.remarks != ''">
+                and remarks = #{remarks}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id删除-->
+    <delete id="delete">
+        delete from quotation_info where id = #{id}
+    </delete>
+
+    <!--根据id查询-->
+    <select id="queryById" resultMap="BaseResultMap" >
+        select * from quotation_info
+        where id = #{id}
+    </select>
+
+    <!--列表查询-->
+	<select id="queryList" resultMap="BaseResultMap">
+        <include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+        <if test="page!=null">
+            <include refid="pagination_tail" />
+        </if>
+	</select>
+
+
+    <!--数量查询-->
+	<select id="queryCount" resultType="java.lang.Long">
+        <include refid="count_Tail"></include>
+		<include refid="where_fragement" />
+	</select>
+
+</mapper>

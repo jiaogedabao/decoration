@@ -13,6 +13,7 @@
 
 	<artifactId>offer-web</artifactId>
 	<name>offer-web</name>
+	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
