@@ -11,7 +11,7 @@ body {
 </style>  
 </head>  
 <body>  
-    <table cellspacing="0" cellpadding="20">  
+    <table cellspacing="0" cellpadding="20" style="background-image:url(/imgs/bg1.png); background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;">  
         <tr>  
             <td>  
                 <table width="500" cellspacing="0" cellpadding="1">  
@@ -42,7 +42,8 @@ body {
                     </tr>  
                 </table></td>  
         </tr>  
-    </table>  
+    </table>
+    <img src="imgs/bg1.png"/>  
 </body>
 </html>  
 

@@ -51,11 +51,11 @@ public class EmailTest {
             message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom("wlsnnew@sina.com");
-            helper.setTo("1099857577@qq.com");
+            helper.setTo("673132594@qq.com");
             helper.setSubject("主题：Home-Decoratioin 报价单");
             Map<String, Object> model = new HashedMap();
             model.put("userName", "wangdada");
-            model.put("customer", "小童");
+            model.put("customer", "小帅");
             model.put("userEmail", "wangdada.qq.com");
             model.put("userPhone", "110119120112");
             //读取 html 模板
