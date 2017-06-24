@@ -20,7 +20,9 @@ public enum APIStatus {
 	/** 500 Internal Server Error. 服务器内部错误,请求处理失败. */
 	ERROR_500(500, "Internal Server Error."),
 	/** 400 Bad Request. 请求参数有问题. */
-	ERROR_400(400, "Bad Request.");
+	ERROR_400(400, "Bad Request."),
+	/** 401 Already Exists. 已存在. */
+	ERROR_401(401, "Already Exists.");
 	
 	public int code;
 	public String message;
