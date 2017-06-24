@@ -27,7 +27,7 @@ public class EmailTest {
 			entity.setAcceptMail("673132594@qq.com");
 			entity.setAcceptName("小A");
 			File file = new File("src/main/resources/baojiadan.xls");
-			entity.addFile("报价单", file);
+			entity.addFile("报价单", file); 
 			emaiUtils.sendTempalte(entity);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
