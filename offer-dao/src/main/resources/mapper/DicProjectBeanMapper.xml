@@ -98,29 +98,26 @@
     <update id="update">
         update  dic_project
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
             </if>
-            <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId},
+            <if test="name != null and name != ''">
+                name = #{name},
             </if>
-            <if test="entity.name != null and entity.name != ''">
-                and name = #{name},
+            <if test="unit != null and unit != ''">
+                unit = #{unit},
             </if>
-            <if test="entity.unit != null and entity.unit != ''">
-                and unit = #{unit},
+            <if test="desConstruction != null and desConstruction != ''">
+                des_construction = #{desConstruction},
             </if>
-            <if test="entity.desConstruction != null and entity.desConstruction != ''">
-                and des_construction = #{desConstruction},
+            <if test="desStuff != null and desStuff != ''">
+                des_stuff = #{desStuff},
             </if>
-            <if test="entity.desStuff != null and entity.desStuff != ''">
-                and des_stuff = #{desStuff},
+            <if test="price != null and price != ''">
+                price = #{price},
             </if>
-            <if test="entity.price != null and entity.price != ''">
-                and price = #{price},
-            </if>
-            <if test="entity.remarks != null and entity.remarks != ''">
-                and remarks = #{remarks},
+            <if test="remarks != null and remarks != ''">
+                remarks = #{remarks},
             </if>
         </set>
         where id = #{id}

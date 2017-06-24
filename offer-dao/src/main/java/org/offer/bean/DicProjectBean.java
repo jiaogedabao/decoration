@@ -25,7 +25,7 @@ public class DicProjectBean implements Serializable {
 
 	private BigDecimal price;//价格
 
-	private String remarks;//价格
+	private String remarks;//备注
 
 
 
