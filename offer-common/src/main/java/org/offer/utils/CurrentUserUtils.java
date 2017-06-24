@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSONObject;
 @Component
 public class CurrentUserUtils {
 	
-	private final static String LOING_PREFIX = "didi-online-login";
+	private final static String LOING_PREFIX = "home.odecoration.offer.login.user";
 
 	//用户缓存失效时间-20分钟
 	private final static int USER_CACHE_SECONDS = 60 * 20;
