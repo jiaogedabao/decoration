@@ -5,11 +5,11 @@ import java.math.BigDecimal;
 /**
  * <p>Description: [耗材表实体类]</p>
  * Copyright (c) 2017 北京柯莱特科技有限公司
- * Created on 2017年06月23日
+ * Created on 2017年06月24日
  * @author  <a href="mailto: wangli@camelotchina.com">王力</a>
  * @version 1.0
  */
-public class SuppliesBean implements Serializable {
+public class DicSuppliesBean implements Serializable {
 
 	private Long id;//自增主键
 
@@ -25,7 +25,7 @@ public class SuppliesBean implements Serializable {
 
 	/**
 	 * <p>Discription:[获取自增主键]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @return Long 自增主键
 	 * @author:[王力]
 	 */	
@@ -36,7 +36,7 @@ public class SuppliesBean implements Serializable {
 
 	/**
 	 * <p>Discription:[设置自增主键]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @param id 自增主键
 	 * @author:[王力]
 	 */		
@@ -47,7 +47,7 @@ public class SuppliesBean implements Serializable {
 	
 	/**
 	 * <p>Discription:[获取用户id]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @return Long 用户id
 	 * @author:[王力]
 	 */	
@@ -58,7 +58,7 @@ public class SuppliesBean implements Serializable {
 
 	/**
 	 * <p>Discription:[设置用户id]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @param userId 用户id
 	 * @author:[王力]
 	 */		
@@ -69,7 +69,7 @@ public class SuppliesBean implements Serializable {
 	
 	/**
 	 * <p>Discription:[获取耗材名称]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @return String 耗材名称
 	 * @author:[王力]
 	 */	
@@ -80,7 +80,7 @@ public class SuppliesBean implements Serializable {
 
 	/**
 	 * <p>Discription:[设置耗材名称]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @param name 耗材名称
 	 * @author:[王力]
 	 */		
@@ -91,7 +91,7 @@ public class SuppliesBean implements Serializable {
 	
 	/**
 	 * <p>Discription:[获取耗材价格]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @return BigDecimal 耗材价格
 	 * @author:[王力]
 	 */	
@@ -102,7 +102,7 @@ public class SuppliesBean implements Serializable {
 
 	/**
 	 * <p>Discription:[设置耗材价格]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @param price 耗材价格
 	 * @author:[王力]
 	 */		
@@ -113,7 +113,7 @@ public class SuppliesBean implements Serializable {
 	
 	/**
 	 * <p>Discription:[获取备注]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @return String 备注
 	 * @author:[王力]
 	 */	
@@ -124,7 +124,7 @@ public class SuppliesBean implements Serializable {
 
 	/**
 	 * <p>Discription:[设置备注]</p>
-	 * Created on 2017年06月23日
+	 * Created on 2017年06月24日
 	 * @param remarks 备注
 	 * @author:[王力]
 	 */		

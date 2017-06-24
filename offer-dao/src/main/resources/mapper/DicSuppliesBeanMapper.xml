@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.offer.dao.SuppliesDAO">
+<mapper namespace="org.offer.dao.DicSuppliesDAO">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="org.offer.bean.SuppliesBean">
+    <resultMap id="BaseResultMap" type="org.offer.bean.DicSuppliesBean">
 			<id column="id" property="id" />
 			<id column="user_id" property="userId" />
 			<id column="name" property="name" />
@@ -19,7 +19,7 @@
         name,
         price,
         remarks
-        from  supplies
+        from  dic_supplies
     </sql>
 
 	<!--分页-->
@@ -29,14 +29,14 @@
 
     <!--数量-->
     <sql id="count_Tail">
-        select count(*) from supplies record
+        select count(*) from dic_supplies record
     </sql>
 
 
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -58,8 +58,8 @@
 	</sql>
 
 
-    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.SuppliesBean">
-        insert into supplies(
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="org.offer.bean.DicSuppliesBean">
+        insert into dic_supplies(
             id,
             user_id,
             name,
@@ -75,22 +75,22 @@
     </insert>
 
     <update id="update">
-        update  supplies
+        update  dic_supplies
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId}
+                and user_id = #{userId},
             </if>
             <if test="entity.name != null and entity.name != ''">
-                and name = #{name}
+                and name = #{name},
             </if>
             <if test="entity.price != null and entity.price != ''">
-                and price = #{price}
+                and price = #{price},
             </if>
             <if test="entity.remarks != null and entity.remarks != ''">
-                and remarks = #{remarks}
+                and remarks = #{remarks},
             </if>
         </set>
         where id = #{id}
@@ -98,12 +98,12 @@
 
     <!--根据id删除-->
     <delete id="delete">
-        delete from supplies where id = #{id}
+        delete from dic_supplies where id = #{id}
     </delete>
 
     <!--根据id查询-->
     <select id="queryById" resultMap="BaseResultMap" >
-        select * from supplies
+        select * from dic_supplies
         where id = #{id}
     </select>
 
