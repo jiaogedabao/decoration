@@ -46,7 +46,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -113,34 +113,34 @@
         update  userinfo
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.loginName != null and entity.loginName != ''">
-                and login_name = #{loginName}
+                and login_name = #{loginName},
             </if>
             <if test="entity.loginPwd != null and entity.loginPwd != ''">
-                and login_pwd = #{loginPwd}
+                and login_pwd = #{loginPwd},
             </if>
             <if test="entity.realName != null and entity.realName != ''">
-                and real_name = #{realName}
+                and real_name = #{realName},
             </if>
             <if test="entity.phone != null and entity.phone != ''">
-                and phone = #{phone}
+                and phone = #{phone},
             </if>
             <if test="entity.email != null and entity.email != ''">
-                and email = #{email}
+                and email = #{email},
             </if>
             <if test="entity.type != null and entity.type != ''">
-                and type = #{type}
+                and type = #{type},
             </if>
             <if test="entity.proYear != null and entity.proYear != ''">
-                and pro_year = #{proYear}
+                and pro_year = #{proYear},
             </if>
             <if test="entity.company != null and entity.company != ''">
-                and company = #{company}
+                and company = #{company},
             </if>
             <if test="entity.status != null and entity.status != ''">
-                and status = #{status}
+                and status = #{status},
             </if>
         </set>
         where id = #{id}

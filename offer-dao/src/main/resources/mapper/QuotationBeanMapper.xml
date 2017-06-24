@@ -15,6 +15,7 @@
 			<id column="is_send" property="isSend" />
 			<id column="create_dt" property="createDt" />
 			<id column="send_dt" property="sendDt" />
+			<id column="is_delete" property="isDelete" />
     </resultMap>
 
     <!--查询所有字段-->
@@ -30,7 +31,8 @@
         descripton,
         is_send,
         create_dt,
-        send_dt
+        send_dt,
+        is_delete
         from  quotation
     </sql>
 
@@ -48,7 +50,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -89,6 +91,9 @@
 				<if test="entity.sendDt != null ">
 					and send_dt = #{entity.sendDt}
 				</if>
+				<if test="entity.isDelete != null and entity.isDelete != ''">
+					and is_delete = #{entity.isDelete}
+				</if>
 			</if>
 		</where>
 	</sql>
@@ -106,7 +111,8 @@
             descripton,
             is_send,
             create_dt,
-            send_dt
+            send_dt,
+            is_delete
         )values(
             #{id},
             #{userId},
@@ -118,7 +124,8 @@
             #{descripton},
             #{isSend},
             #{createDt},
-            #{sendDt}
+            #{sendDt},
+            #{isDelete}
         )
     </insert>
 
@@ -126,43 +133,46 @@
         update  quotation
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId}
+                and user_id = #{userId},
             </if>
             <if test="entity.name != null and entity.name != ''">
-                and name = #{name}
+                and name = #{name},
             </if>
             <if test="entity.custName != null and entity.custName != ''">
-                and cust_name = #{custName}
+                and cust_name = #{custName},
             </if>
             <if test="entity.custPhone != null and entity.custPhone != ''">
-                and cust_phone = #{custPhone}
+                and cust_phone = #{custPhone},
             </if>
             <if test="entity.custEmail != null and entity.custEmail != ''">
-                and cust_email = #{custEmail}
+                and cust_email = #{custEmail},
             </if>
             <if test="entity.totalPrice != null and entity.totalPrice != ''">
-                and total_price = #{totalPrice}
+                and total_price = #{totalPrice},
             </if>
             <if test="entity.descripton != null and entity.descripton != ''">
-                and descripton = #{descripton}
+                and descripton = #{descripton},
             </if>
             <if test="entity.isSend != null and entity.isSend != ''">
-                and is_send = #{isSend}
+                and is_send = #{isSend},
             </if>
             <if test="entity.createDt != null ">
-                and create_dt = #{createDt}
+                and create_dt = #{createDt},
             </if>
                 <if test="entity.createDtStart != null and entity.createDtStart != ''">
-                    <![CDATA[  and create_dt >= #{createDtStart} ]]>
+                    <![CDATA[  and create_dt >= #{createDtStart} ]]>,
                 </if>
                 <if test="entity.createDtEnd != null and entity.createDtEnd != ''">
-                    <![CDATA[  and create_dt <= #{createDtEnd} ]]>
+                    <![CDATA[  and create_dt <= #{createDtEnd} ]]>,
                 </if>
             <if test="entity.sendDt != null ">
-                and send_dt = #{sendDt}
+                and send_dt = #{sendDt},
+            </if>
+            <if test="entity.isDelete != null and entity.isDelete != ''">
+                and is_delete = #{isDelete},
             </if>
         </set>
         where id = #{id}

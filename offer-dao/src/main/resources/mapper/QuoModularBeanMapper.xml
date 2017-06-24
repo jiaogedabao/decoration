@@ -36,7 +36,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -78,19 +78,19 @@
         update  quo_modular
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.quoId != null and entity.quoId != ''">
-                and quo_id = #{quoId}
+                and quo_id = #{quoId},
             </if>
             <if test="entity.modNamer != null and entity.modNamer != ''">
-                and mod_namer = #{modNamer}
+                and mod_namer = #{modNamer},
             </if>
             <if test="entity.modPrice != null and entity.modPrice != ''">
-                and mod_price = #{modPrice}
+                and mod_price = #{modPrice},
             </if>
             <if test="entity.modOrder != null and entity.modOrder != ''">
-                and mod_order = #{modOrder}
+                and mod_order = #{modOrder},
             </if>
         </set>
         where id = #{id}

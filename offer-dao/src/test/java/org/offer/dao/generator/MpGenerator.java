@@ -24,7 +24,7 @@ public class MpGenerator {
      * <p>Discription:[要生成的表]</p>
      **/
     private static String[] tebles = new String[] {"dic_project","quo_modular","quotation","quotation_info",
-    		"quotation_template","supplies","template_info","template_modular","userinfo"};
+    		"quotation_template","dic_supplies","template_info","template_modular","userinfo"};
 
     /**
      * <p>Discription:[在判断的时候不添加!=''的字段]</p>

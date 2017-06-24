@@ -39,7 +39,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 			 <#list table.fields as field>
 				<if test="entity.${field.propertyName} != null <#if !(cfg.notAppendApostropheTypes?seq_contains(field.propertyType))>and entity.${field.propertyName} != ''</#if>">
@@ -78,14 +78,14 @@
         <set>
 		<#list table.fields as field>
             <if test="entity.${field.propertyName} != null <#if !(cfg.notAppendApostropheTypes?seq_contains(field.propertyType))>and entity.${field.propertyName} != ''</#if>">
-                and ${field.name} = ${r'#{'}${field.propertyName}}
+                and ${field.name} = ${r'#{'}${field.propertyName}},
             </if>
 			<#if "Date"?contains(field.propertyType) && cfg.rangeDateFileds?seq_contains(field.propertyName)>
                 <if test="entity.${field.propertyName}Start != null and entity.${field.propertyName}Start != ''">
-                    <![CDATA[  and ${field.name} >= ${r'#{'}${field.propertyName}Start} ]]>
+                    <![CDATA[  and ${field.name} >= ${r'#{'}${field.propertyName}Start} ]]>,
                 </if>
                 <if test="entity.${field.propertyName}End != null and entity.${field.propertyName}End != ''">
-                    <![CDATA[  and ${field.name} <= ${r'#{'}${field.propertyName}End} ]]>
+                    <![CDATA[  and ${field.name} <= ${r'#{'}${field.propertyName}End} ]]>,
                 </if>
 			</#if>
 		</#list>

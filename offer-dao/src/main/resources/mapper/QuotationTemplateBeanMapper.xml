@@ -36,7 +36,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -78,19 +78,19 @@
         update  quotation_template
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId}
+                and user_id = #{userId},
             </if>
             <if test="entity.temName != null and entity.temName != ''">
-                and tem_name = #{temName}
+                and tem_name = #{temName},
             </if>
             <if test="entity.totalPrice != null and entity.totalPrice != ''">
-                and total_price = #{totalPrice}
+                and total_price = #{totalPrice},
             </if>
             <if test="entity.temDes != null and entity.temDes != ''">
-                and tem_des = #{temDes}
+                and tem_des = #{temDes},
             </if>
         </set>
         where id = #{id}

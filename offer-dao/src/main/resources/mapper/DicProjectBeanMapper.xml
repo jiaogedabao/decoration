@@ -42,7 +42,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -99,28 +99,28 @@
         update  dic_project
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId}
+                and user_id = #{userId},
             </if>
             <if test="entity.name != null and entity.name != ''">
-                and name = #{name}
+                and name = #{name},
             </if>
             <if test="entity.unit != null and entity.unit != ''">
-                and unit = #{unit}
+                and unit = #{unit},
             </if>
             <if test="entity.desConstruction != null and entity.desConstruction != ''">
-                and des_construction = #{desConstruction}
+                and des_construction = #{desConstruction},
             </if>
             <if test="entity.desStuff != null and entity.desStuff != ''">
-                and des_stuff = #{desStuff}
+                and des_stuff = #{desStuff},
             </if>
             <if test="entity.price != null and entity.price != ''">
-                and price = #{price}
+                and price = #{price},
             </if>
             <if test="entity.remarks != null and entity.remarks != ''">
-                and remarks = #{remarks}
+                and remarks = #{remarks},
             </if>
         </set>
         where id = #{id}

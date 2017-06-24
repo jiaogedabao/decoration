@@ -44,7 +44,7 @@
 
 	<!--查询条件-->
 	<sql id="where_fragement">
-		<where>s
+		<where>
 			<if test="entity != null">
 				<if test="entity.id != null and entity.id != ''">
 					and id = #{entity.id}
@@ -106,31 +106,31 @@
         update  quotation_info
         <set>
             <if test="entity.id != null and entity.id != ''">
-                and id = #{id}
+                and id = #{id},
             </if>
             <if test="entity.modId != null and entity.modId != ''">
-                and mod_id = #{modId}
+                and mod_id = #{modId},
             </if>
             <if test="entity.proSupName != null and entity.proSupName != ''">
-                and pro_sup_name = #{proSupName}
+                and pro_sup_name = #{proSupName},
             </if>
             <if test="entity.unit != null and entity.unit != ''">
-                and unit = #{unit}
+                and unit = #{unit},
             </if>
             <if test="entity.unitPrice != null and entity.unitPrice != ''">
-                and unit_price = #{unitPrice}
+                and unit_price = #{unitPrice},
             </if>
             <if test="entity.num != null and entity.num != ''">
-                and num = #{num}
+                and num = #{num},
             </if>
             <if test="entity.desConstruction != null and entity.desConstruction != ''">
-                and des_construction = #{desConstruction}
+                and des_construction = #{desConstruction},
             </if>
             <if test="entity.desStuff != null and entity.desStuff != ''">
-                and des_stuff = #{desStuff}
+                and des_stuff = #{desStuff},
             </if>
             <if test="entity.remarks != null and entity.remarks != ''">
-                and remarks = #{remarks}
+                and remarks = #{remarks},
             </if>
         </set>
         where id = #{id}
