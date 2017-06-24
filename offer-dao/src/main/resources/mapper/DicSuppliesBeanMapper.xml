@@ -77,20 +77,20 @@
     <update id="update">
         update  dic_supplies
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="id != null and id != ''">
+                id = #{id},
             </if>
-            <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId},
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
             </if>
-            <if test="entity.name != null and entity.name != ''">
-                and name = #{name},
+            <if test="name != null and name != ''">
+                name = #{name},
             </if>
-            <if test="entity.price != null and entity.price != ''">
-                and price = #{price},
+            <if test="price != null and price != ''">
+                price = #{price},
             </if>
-            <if test="entity.remarks != null and entity.remarks != ''">
-                and remarks = #{remarks},
+            <if test="remarks != null and remarks != ''">
+                remarks = #{remarks},
             </if>
         </set>
         where id = #{id}

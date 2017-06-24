@@ -105,32 +105,32 @@
     <update id="update">
         update  quotation_info
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="id != null and id != ''">
+                id = #{id},
             </if>
-            <if test="entity.modId != null and entity.modId != ''">
-                and mod_id = #{modId},
+            <if test="modId != null and modId != ''">
+                mod_id = #{modId},
             </if>
-            <if test="entity.proSupName != null and entity.proSupName != ''">
-                and pro_sup_name = #{proSupName},
+            <if test="proSupName != null and proSupName != ''">
+                pro_sup_name = #{proSupName},
             </if>
-            <if test="entity.unit != null and entity.unit != ''">
-                and unit = #{unit},
+            <if test="unit != null and unit != ''">
+                unit = #{unit},
             </if>
-            <if test="entity.unitPrice != null and entity.unitPrice != ''">
-                and unit_price = #{unitPrice},
+            <if test="unitPrice != null and unitPrice != ''">
+                unit_price = #{unitPrice},
             </if>
-            <if test="entity.num != null and entity.num != ''">
-                and num = #{num},
+            <if test="num != null and num != ''">
+                num = #{num},
             </if>
-            <if test="entity.desConstruction != null and entity.desConstruction != ''">
-                and des_construction = #{desConstruction},
+            <if test="desConstruction != null and desConstruction != ''">
+                des_construction = #{desConstruction},
             </if>
-            <if test="entity.desStuff != null and entity.desStuff != ''">
-                and des_stuff = #{desStuff},
+            <if test="desStuff != null and desStuff != ''">
+                des_stuff = #{desStuff},
             </if>
-            <if test="entity.remarks != null and entity.remarks != ''">
-                and remarks = #{remarks},
+            <if test="remarks != null and remarks != ''">
+                remarks = #{remarks},
             </if>
         </set>
         where id = #{id}

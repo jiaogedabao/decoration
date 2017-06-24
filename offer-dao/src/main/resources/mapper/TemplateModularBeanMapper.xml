@@ -77,20 +77,20 @@
     <update id="update">
         update  template_modular
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="id != null and id != ''">
+                id = #{id},
             </if>
-            <if test="entity.temId != null and entity.temId != ''">
-                and tem_id = #{temId},
+            <if test="temId != null and temId != ''">
+                tem_id = #{temId},
             </if>
-            <if test="entity.modNamer != null and entity.modNamer != ''">
-                and mod_namer = #{modNamer},
+            <if test="modNamer != null and modNamer != ''">
+                mod_namer = #{modNamer},
             </if>
-            <if test="entity.modPrice != null and entity.modPrice != ''">
-                and mod_price = #{modPrice},
+            <if test="modPrice != null and modPrice != ''">
+                mod_price = #{modPrice},
             </if>
-            <if test="entity.modOrder != null and entity.modOrder != ''">
-                and mod_order = #{modOrder},
+            <if test="modOrder != null and modOrder != ''">
+                mod_order = #{modOrder},
             </if>
         </set>
         where id = #{id}

@@ -31,7 +31,7 @@ import springfox.documentation.annotations.ApiIgnore;
 * @date 2017年6月24日
 *
 */
-@Api(value = "工程项目web接口")
+@Api(value = "工程项目web接口", description="工程项目web接口")
 @RestController
 @RequestMapping("/dicProject")
 public class DicProjectController {

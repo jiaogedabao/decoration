@@ -98,6 +98,9 @@
     <update id="update">
         update  dic_project
         <set>
+            <if test="id != null and id != ''">
+                id = #{id},
+            </if>
             <if test="userId != null and userId != ''">
                 user_id = #{userId},
             </if>

@@ -77,20 +77,20 @@
     <update id="update">
         update  quotation_template
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="id != null and id != ''">
+                id = #{id},
             </if>
-            <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId},
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
             </if>
-            <if test="entity.temName != null and entity.temName != ''">
-                and tem_name = #{temName},
+            <if test="temName != null and temName != ''">
+                tem_name = #{temName},
             </if>
-            <if test="entity.totalPrice != null and entity.totalPrice != ''">
-                and total_price = #{totalPrice},
+            <if test="totalPrice != null and totalPrice != ''">
+                total_price = #{totalPrice},
             </if>
-            <if test="entity.temDes != null and entity.temDes != ''">
-                and tem_des = #{temDes},
+            <if test="temDes != null and temDes != ''">
+                tem_des = #{temDes},
             </if>
         </set>
         where id = #{id}

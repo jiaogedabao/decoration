@@ -112,35 +112,35 @@
     <update id="update">
         update  userinfo
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="id != null and id != ''">
+                id = #{id},
             </if>
-            <if test="entity.loginName != null and entity.loginName != ''">
-                and login_name = #{loginName},
+            <if test="loginName != null and loginName != ''">
+                login_name = #{loginName},
             </if>
-            <if test="entity.loginPwd != null and entity.loginPwd != ''">
-                and login_pwd = #{loginPwd},
+            <if test="loginPwd != null and loginPwd != ''">
+                login_pwd = #{loginPwd},
             </if>
-            <if test="entity.realName != null and entity.realName != ''">
-                and real_name = #{realName},
+            <if test="realName != null and realName != ''">
+                real_name = #{realName},
             </if>
-            <if test="entity.phone != null and entity.phone != ''">
-                and phone = #{phone},
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
             </if>
-            <if test="entity.email != null and entity.email != ''">
-                and email = #{email},
+            <if test="email != null and email != ''">
+                email = #{email},
             </if>
-            <if test="entity.type != null and entity.type != ''">
-                and type = #{type},
+            <if test="type != null and type != ''">
+                type = #{type},
             </if>
-            <if test="entity.proYear != null and entity.proYear != ''">
-                and pro_year = #{proYear},
+            <if test="proYear != null and proYear != ''">
+                pro_year = #{proYear},
             </if>
-            <if test="entity.company != null and entity.company != ''">
-                and company = #{company},
+            <if test="company != null and company != ''">
+                company = #{company},
             </if>
-            <if test="entity.status != null and entity.status != ''">
-                and status = #{status},
+            <if test="status != null and status != ''">
+                status = #{status},
             </if>
         </set>
         where id = #{id}

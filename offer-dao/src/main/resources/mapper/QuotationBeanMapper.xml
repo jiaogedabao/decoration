@@ -132,47 +132,47 @@
     <update id="update">
         update  quotation
         <set>
-            <if test="entity.id != null and entity.id != ''">
-                and id = #{id},
+            <if test="id != null and id != ''">
+                id = #{id},
             </if>
-            <if test="entity.userId != null and entity.userId != ''">
-                and user_id = #{userId},
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
             </if>
-            <if test="entity.name != null and entity.name != ''">
-                and name = #{name},
+            <if test="name != null and name != ''">
+                name = #{name},
             </if>
-            <if test="entity.custName != null and entity.custName != ''">
-                and cust_name = #{custName},
+            <if test="custName != null and custName != ''">
+                cust_name = #{custName},
             </if>
-            <if test="entity.custPhone != null and entity.custPhone != ''">
-                and cust_phone = #{custPhone},
+            <if test="custPhone != null and custPhone != ''">
+                cust_phone = #{custPhone},
             </if>
-            <if test="entity.custEmail != null and entity.custEmail != ''">
-                and cust_email = #{custEmail},
+            <if test="custEmail != null and custEmail != ''">
+                cust_email = #{custEmail},
             </if>
-            <if test="entity.totalPrice != null and entity.totalPrice != ''">
-                and total_price = #{totalPrice},
+            <if test="totalPrice != null and totalPrice != ''">
+                total_price = #{totalPrice},
             </if>
-            <if test="entity.descripton != null and entity.descripton != ''">
-                and descripton = #{descripton},
+            <if test="descripton != null and descripton != ''">
+                descripton = #{descripton},
             </if>
-            <if test="entity.isSend != null and entity.isSend != ''">
-                and is_send = #{isSend},
+            <if test="isSend != null and isSend != ''">
+                is_send = #{isSend},
             </if>
-            <if test="entity.createDt != null ">
-                and create_dt = #{createDt},
+            <if test="createDt != null ">
+                create_dt = #{createDt},
             </if>
-                <if test="entity.createDtStart != null and entity.createDtStart != ''">
-                    <![CDATA[  and create_dt >= #{createDtStart} ]]>,
+                <if test="createDtStart != null and createDtStart != ''">
+                    <![CDATA[ create_dt >= #{createDtStart} ]]>,
                 </if>
-                <if test="entity.createDtEnd != null and entity.createDtEnd != ''">
-                    <![CDATA[  and create_dt <= #{createDtEnd} ]]>,
+                <if test="createDtEnd != null and createDtEnd != ''">
+                    <![CDATA[ create_dt <= #{createDtEnd} ]]>,
                 </if>
-            <if test="entity.sendDt != null ">
-                and send_dt = #{sendDt},
+            <if test="sendDt != null ">
+                send_dt = #{sendDt},
             </if>
-            <if test="entity.isDelete != null and entity.isDelete != ''">
-                and is_delete = #{isDelete},
+            <if test="isDelete != null and isDelete != ''">
+                is_delete = #{isDelete},
             </if>
         </set>
         where id = #{id}
