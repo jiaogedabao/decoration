@@ -34,7 +34,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @Api(value = "工程项目web接口", description="工程项目web接口")
 @RestController
 @RequestMapping("/dicProject")
-public class DicProjectController2 {
+public class DicProjectController {
 	
 	@Resource
 	private DicProjectService dicProjectService;
