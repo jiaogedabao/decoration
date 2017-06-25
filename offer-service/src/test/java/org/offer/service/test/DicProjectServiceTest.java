@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.offer.bean.DicProjectBean;
-import org.offer.http.APIStatus;
 import org.offer.service.DicProjectService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.alibaba.fastjson.JSONObject;
 import com.camelot.openplatform.common.bean.DataGrid;
 import com.camelot.openplatform.common.bean.ExecuteResult;
+import com.camelot.openplatform.common.bean.Pager;
 
 
 /**
@@ -39,7 +39,7 @@ public class DicProjectServiceTest {
 		bean.setUnit("平米");
 		bean.setDesConstruction("刮三边腻子");
 		bean.setDesStuff("飞鸽牌反水腻子");
-		ExecuteResult<APIStatus> result = service.addProject(bean);
+		ExecuteResult<JSONObject> result = service.addProject(bean);
 		System.out.println("------------add:" + JSONObject.toJSONString(result));
 	}
 
@@ -54,13 +54,13 @@ public class DicProjectServiceTest {
 	@Test
 	public void update(){
 		DicProjectBean bean = new DicProjectBean();
-		bean.setId(2L);
+		bean.setId(1L);
 		bean.setName("刮腻子");
 		bean.setPrice(BigDecimal.valueOf(18.00));
 		bean.setUnit("平米");
 		bean.setDesConstruction("刮两边腻子");
 		bean.setDesStuff("飞鸽牌反水腻子");
-		ExecuteResult<APIStatus> result = service.updateProject(bean);
+		ExecuteResult<JSONObject> result = service.updateProject(bean);
 		System.out.println("------------update:" + JSONObject.toJSONString(result));
 	}
 	
@@ -75,7 +75,8 @@ public class DicProjectServiceTest {
 	@Test
 	public void queryPage(){
 		String name = "刮腻子2";
-		DataGrid<DicProjectBean> result = service.queryPage(name, 1);
+		Pager<DicProjectBean> page = new Pager<DicProjectBean>();
+		DataGrid<DicProjectBean> result = service.queryPage(name, page);
 		System.out.println("------------queryPage:" + JSONObject.toJSONString(result));
 	}
 	
@@ -89,7 +90,7 @@ public class DicProjectServiceTest {
 	*/
 	@Test
 	public void delete(){
-		ExecuteResult<APIStatus> result = service.deleteProject(1L);
+		ExecuteResult<JSONObject> result = service.deleteProject(1L);
 		System.out.println("------------delete:" + JSONObject.toJSONString(result));
 	}
 	
