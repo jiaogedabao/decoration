@@ -3,7 +3,6 @@ package org.offer.service;
 import org.offer.bean.DicProjectBean;
 import org.offer.http.APIStatus;
 
-import com.alibaba.fastjson.JSONObject;
 import com.camelot.openplatform.common.bean.DataGrid;
 import com.camelot.openplatform.common.bean.ExecuteResult;
 
