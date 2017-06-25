@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiParam;
 import springfox.documentation.annotations.ApiIgnore;
 
 /**
-* @ClassName: DicProjectController 
+* @ClassName: DicProjectController
 * @Description: 工程项目web接口
 * @author wangdada
 * @date 2017年6月24日
