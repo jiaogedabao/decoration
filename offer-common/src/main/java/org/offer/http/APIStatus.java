@@ -8,7 +8,7 @@ package org.offer.http;
  * @version 1.0 
  * Copyright (c) 2017 北京柯莱特科技有限公司 交付部
  */
-public enum APIStatus {
+public enum APIStatus { 
 	/** 404 Not Found. 访问的API不存在. */
 	NOT_FOUND_404(404, "Not Found."),
 	/** 403 Not Found. 禁止访问,没有权限. */
