@@ -157,6 +157,12 @@
         where id = #{id}
     </select>
 
+	<!--根据用户名查询-->
+    <select id="queryByName" resultMap="BaseResultMap">
+        select * from userinfo
+        where login_name = #{loginName}
+    </select>
+
     <!--列表查询-->
 	<select id="queryList" resultMap="BaseResultMap">
         <include refid="selectAllColumns"/>

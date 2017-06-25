@@ -15,6 +15,7 @@ import com.camelot.openplatform.common.dao.BaseDAO;
  */
 @Mapper
 public interface UserinfoDAO extends BaseDAO<UserinfoBean> {
-
+	
+	UserinfoBean queryByName(String loginName);
 
 }

@@ -40,16 +40,43 @@ public class CurrentUserUtils {
 		}
 		return null;
 	}
+	
+	/**
+	 * <p>Discription:[获取当前登录用户]</p>
+	 * Created on 2017年6月16日
+	 * @param loginName  登录用户的名
+	 * @return UserBean 用户bean对象
+	 * @author:[王力]
+	 */
+	public UserinfoBean getCurrentByLoginName(String loginName){
+		String authTicket = LOING_PREFIX+getAutoTicket(loginName);
+		String str = redisDB.get(authTicket);
+		if(StringUtils.isNotEmpty(str)){
+			return  JSONObject.parseObject(str, UserinfoBean.class);
+		}
+		return null;
+	}
 
 	/**
 	 * Discription: [更新当前用户信息缓存]
 	 * Created on: 11:14 2017/6/21
-	 * @param authTicket 用户ticket
 	 * @param data 用户bean
+	 * @return authTicket 用户ticket 
 	 * @author: <a href="mailto: dengjiang@camelotchina.com">邓江</a>
 	 */
-	public void updateUserCache(String authTicket, UserinfoBean data) {
-		redisDB.setAndExpire(LOING_PREFIX + authTicket, JSONObject.toJSONString(data), USER_CACHE_SECONDS);
+	public String updateUserCache(UserinfoBean data) {
+		String authTicket = LOING_PREFIX+getAutoTicket(data.getLoginName());
+		//这里key:就是ticket;value:就是用户的信息
+		redisDB.setAndExpire(authTicket, JSONObject.toJSONString(data), USER_CACHE_SECONDS);
+		return authTicket;
+	}
+	
+	/**
+	 * @param 生成tikect tiket = encrypt（用户登录名+登录时间+访问ip）
+	 * @return）
+	 */
+	public String getAutoTicket(String str){
+		return str;
 	}
 
 }

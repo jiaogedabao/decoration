@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.alibaba.fastjson.JSONObject;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserDaoTest {
@@ -24,7 +26,14 @@ public class UserDaoTest {
 	@Test
 	public void add(){
 		UserinfoBean user = new UserinfoBean();
-		user.setLoginName("ggggg");
+		user.setLoginName("王莉萍");
 		dao.add(user);
 	}
+	
+	@Test
+	public void queryByName(){
+		UserinfoBean user = dao.queryByName("童");
+		System.out.println(user);
+	}
+	
 }

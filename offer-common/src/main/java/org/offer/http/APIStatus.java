@@ -22,8 +22,9 @@ public enum APIStatus {
 	/** 400 Bad Request. 请求参数有问题. */
 	ERROR_400(400, "Bad Request."),
 	/** 401 Already Exists. 已存在. */
-	ERROR_401(401, "Already Exists.");
-	
+	ERROR_401(401, "Already Exists."),
+	/** 402 NotFound User. 用户不存在. */
+	ERROR_402(402, "NotFound User.");
 	public int code;
 	public String message;
 	private APIStatus(int code, String message) {
