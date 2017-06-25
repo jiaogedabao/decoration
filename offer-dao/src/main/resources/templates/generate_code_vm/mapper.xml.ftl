@@ -77,15 +77,15 @@
         update  ${table.name}
         <set>
 		<#list table.fields as field>
-            <if test="entity.${field.propertyName} != null <#if !(cfg.notAppendApostropheTypes?seq_contains(field.propertyType))>and entity.${field.propertyName} != ''</#if>">
-                and ${field.name} = ${r'#{'}${field.propertyName}},
+            <if test="${field.propertyName} != null <#if !(cfg.notAppendApostropheTypes?seq_contains(field.propertyType))>and ${field.propertyName} != ''</#if>">
+                ${field.name} = ${r'#{'}${field.propertyName}},
             </if>
 			<#if "Date"?contains(field.propertyType) && cfg.rangeDateFileds?seq_contains(field.propertyName)>
-                <if test="entity.${field.propertyName}Start != null and entity.${field.propertyName}Start != ''">
-                    <![CDATA[  and ${field.name} >= ${r'#{'}${field.propertyName}Start} ]]>,
+                <if test="${field.propertyName}Start != null and ${field.propertyName}Start != ''">
+                    <![CDATA[ ${field.name} >= ${r'#{'}${field.propertyName}Start} ]]>,
                 </if>
-                <if test="entity.${field.propertyName}End != null and entity.${field.propertyName}End != ''">
-                    <![CDATA[  and ${field.name} <= ${r'#{'}${field.propertyName}End} ]]>,
+                <if test="${field.propertyName}End != null and ${field.propertyName}End != ''">
+                    <![CDATA[ ${field.name} <= ${r'#{'}${field.propertyName}End} ]]>,
                 </if>
 			</#if>
 		</#list>
